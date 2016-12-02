@@ -41,7 +41,7 @@
   <profiles>
   	<profile>
 		<!-- 开发环境 -->
-		<id>Development</id>
+		<id>development</id>
 		<!-- 默认激活开发环境 -->
 		<activation>
 			<activeByDefault>true</activeByDefault>
