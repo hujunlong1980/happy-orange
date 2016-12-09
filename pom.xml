@@ -149,6 +149,15 @@
 			<version>${hibernate.version}</version>
 		</dependency>
         <!-- hibernate配置结束 -->
+
+
+        <!-- orange 模块开始 -->
+        <dependency>
+            <groupId>com.happy.orange</groupId>
+            <artifactId>orange-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!-- orange 模块结束 -->
   	</dependencies>
   </dependencyManagement>
   <modules>
@@ -157,17 +166,41 @@
   </modules>
   <build>
   	<pluginManagement>
-  		<plugins>
-  			<plugin>
-  				<artifactId>maven-compiler-plugin</artifactId>
-  				<configuration>
-  					<source>${jdk.version}</source>
-  					<target>${jdk.version}</target>
-  					<optimize>true</optimize>
-  				</configuration>
-  			</plugin>
-  		</plugins>
+		<plugins>
+			<!-- 设置源文件编码方式 -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<optimize>true</optimize>
+				</configuration>
+			</plugin>
+			<!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>true</addMavenDescriptor>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- 解决资源文件的编码问题 -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!--  打包source文件为jar文件 -->
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
   	</pluginManagement>
   </build>
-
 </project>

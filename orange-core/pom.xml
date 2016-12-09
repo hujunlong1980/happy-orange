@@ -54,10 +54,10 @@
   	</profile>
 	<profile>
 		<!-- 测试环境 -->
-		<id>testing</id>
+		<id>test</id>
 		<build>
 			<filters>
-				<filter>../profiles/profile-testing.properties</filter>
+				<filter>../profiles/profile-test.properties</filter>
 			</filters>
 		</build>
 	</profile>

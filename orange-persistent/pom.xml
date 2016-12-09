@@ -21,7 +21,39 @@
      <dependency>
          <groupId>mysql</groupId>
          <artifactId>mysql-connector-java</artifactId>
-         <version>${mysql.version}</version>
      </dependency>
   </dependencies>
+  <profiles>
+  	<profile>
+		<!-- 开发环境 -->
+		<id>development</id>
+		<!-- 默认激活开发环境 -->
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+		<build>
+			<filters>
+				<filter>../../profiles/profile-development.properties</filter>
+			</filters>
+		</build>
+  	</profile>
+	<profile>
+		<!-- 测试环境 -->
+		<id>test</id>
+		<build>
+			<filters>
+				<filter>../../profiles/profile-test.properties</filter>
+			</filters>
+		</build>
+	</profile>
+	<profile>
+		<!-- 生产环境 -->
+		<id>production</id>
+		<build>
+			<filters>
+				<filter>../../profiles/profile-production.properties</filter>
+			</filters>
+		</build>
+	</profile>
+  </profiles>
 </project>

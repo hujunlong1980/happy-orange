@@ -20,11 +20,19 @@
 	</dependency>
   </dependencies>
   <build>
+  	<finalName>orange-entity</finalName>
+  	<resources>
+  		<!-- 指定 src/main/resources下所有文件及文件夹为资源文件 -->
+  		<resource>
+  			<directory>${project.basedir}/src/main/resources</directory>
+  			<filtering>true</filtering>
+  		</resource>
+  	</resources>
   	<plugins>
   		<plugin>
   			<groupId>org.mybatis.generator</groupId>
   			<artifactId>mybatis-generator-maven-plugin</artifactId>
-  			<version>1.3.5</version>
+  			<!-- <version>1.3.5</version> -->
   			<configuration>
   				<!-- generatorConfig.xml配置文件 -->
   				<configurationFile>src/main/resources/mybatis/generatorConfig.xml</configurationFile>

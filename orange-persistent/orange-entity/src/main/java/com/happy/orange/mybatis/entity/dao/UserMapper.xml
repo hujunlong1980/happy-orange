@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happy.orange.mybatis.entity.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.happy.orange.mybatis.entity.vo.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="user_type" jdbcType="CHAR" property="userType" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="deal_pwd" jdbcType="VARCHAR" property="dealPwd" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="referee" jdbcType="INTEGER" property="referee" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="openId" jdbcType="VARCHAR" property="openid" />
+    <result column="blacklist" jdbcType="CHAR" property="blacklist" />
+    <result column="locked" jdbcType="CHAR" property="locked" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="lastupdate" jdbcType="TIMESTAMP" property="lastupdate" />
+    <result column="manager" jdbcType="INTEGER" property="manager" />
+    <result column="source_from" jdbcType="CHAR" property="sourceFrom" />
+    <result column="last_logintime" jdbcType="TIMESTAMP" property="lastLogintime" />
+    <result column="email_verified" jdbcType="CHAR" property="emailVerified" />
+    <result column="mobile_verified" jdbcType="CHAR" property="mobileVerified" />
+    <result column="idcard_verified" jdbcType="CHAR" property="idcardVerified" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="failure_times" jdbcType="INTEGER" property="failureTimes" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="registertype" jdbcType="CHAR" property="registertype" />
+    <result column="user_cfp_id" jdbcType="INTEGER" property="userCfpId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, login_name, account, user_type, password, deal_pwd, real_name, referee, invite_code, 
+    email, mobile, idcard, openId, blacklist, locked, create_time, lastupdate, manager, 
+    source_from, last_logintime, email_verified, mobile_verified, idcard_verified, head_img, 
+    failure_times, sex, birthday, registertype, user_cfp_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.happy.orange.mybatis.entity.vo.User">
+    insert into user (id, login_name, account, 
+      user_type, password, deal_pwd, 
+      real_name, referee, invite_code, 
+      email, mobile, idcard, 
+      openId, blacklist, locked, 
+      create_time, lastupdate, manager, 
+      source_from, last_logintime, email_verified, 
+      mobile_verified, idcard_verified, head_img, 
+      failure_times, sex, birthday, 
+      registertype, user_cfp_id)
+    values (#{id,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=CHAR}, #{password,jdbcType=VARCHAR}, #{dealPwd,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{referee,jdbcType=INTEGER}, #{inviteCode,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{openid,jdbcType=VARCHAR}, #{blacklist,jdbcType=CHAR}, #{locked,jdbcType=CHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{lastupdate,jdbcType=TIMESTAMP}, #{manager,jdbcType=INTEGER}, 
+      #{sourceFrom,jdbcType=CHAR}, #{lastLogintime,jdbcType=TIMESTAMP}, #{emailVerified,jdbcType=CHAR}, 
+      #{mobileVerified,jdbcType=CHAR}, #{idcardVerified,jdbcType=CHAR}, #{headImg,jdbcType=VARCHAR}, 
+      #{failureTimes,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{registertype,jdbcType=CHAR}, #{userCfpId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.happy.orange.mybatis.entity.vo.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="dealPwd != null">
+        deal_pwd,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="referee != null">
+        referee,
+      </if>
+      <if test="inviteCode != null">
+        invite_code,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="idcard != null">
+        idcard,
+      </if>
+      <if test="openid != null">
+        openId,
+      </if>
+      <if test="blacklist != null">
+        blacklist,
+      </if>
+      <if test="locked != null">
+        locked,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastupdate != null">
+        lastupdate,
+      </if>
+      <if test="manager != null">
+        manager,
+      </if>
+      <if test="sourceFrom != null">
+        source_from,
+      </if>
+      <if test="lastLogintime != null">
+        last_logintime,
+      </if>
+      <if test="emailVerified != null">
+        email_verified,
+      </if>
+      <if test="mobileVerified != null">
+        mobile_verified,
+      </if>
+      <if test="idcardVerified != null">
+        idcard_verified,
+      </if>
+      <if test="headImg != null">
+        head_img,
+      </if>
+      <if test="failureTimes != null">
+        failure_times,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="registertype != null">
+        registertype,
+      </if>
+      <if test="userCfpId != null">
+        user_cfp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPwd != null">
+        #{dealPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="referee != null">
+        #{referee,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="blacklist != null">
+        #{blacklist,jdbcType=CHAR},
+      </if>
+      <if test="locked != null">
+        #{locked,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdate != null">
+        #{lastupdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manager != null">
+        #{manager,jdbcType=INTEGER},
+      </if>
+      <if test="sourceFrom != null">
+        #{sourceFrom,jdbcType=CHAR},
+      </if>
+      <if test="lastLogintime != null">
+        #{lastLogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emailVerified != null">
+        #{emailVerified,jdbcType=CHAR},
+      </if>
+      <if test="mobileVerified != null">
+        #{mobileVerified,jdbcType=CHAR},
+      </if>
+      <if test="idcardVerified != null">
+        #{idcardVerified,jdbcType=CHAR},
+      </if>
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="failureTimes != null">
+        #{failureTimes,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertype != null">
+        #{registertype,jdbcType=CHAR},
+      </if>
+      <if test="userCfpId != null">
+        #{userCfpId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.happy.orange.mybatis.entity.vo.User">
+    update user
+    <set>
+      <if test="loginName != null">
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPwd != null">
+        deal_pwd = #{dealPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="referee != null">
+        referee = #{referee,jdbcType=INTEGER},
+      </if>
+      <if test="inviteCode != null">
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        openId = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="blacklist != null">
+        blacklist = #{blacklist,jdbcType=CHAR},
+      </if>
+      <if test="locked != null">
+        locked = #{locked,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdate != null">
+        lastupdate = #{lastupdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="manager != null">
+        manager = #{manager,jdbcType=INTEGER},
+      </if>
+      <if test="sourceFrom != null">
+        source_from = #{sourceFrom,jdbcType=CHAR},
+      </if>
+      <if test="lastLogintime != null">
+        last_logintime = #{lastLogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emailVerified != null">
+        email_verified = #{emailVerified,jdbcType=CHAR},
+      </if>
+      <if test="mobileVerified != null">
+        mobile_verified = #{mobileVerified,jdbcType=CHAR},
+      </if>
+      <if test="idcardVerified != null">
+        idcard_verified = #{idcardVerified,jdbcType=CHAR},
+      </if>
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="failureTimes != null">
+        failure_times = #{failureTimes,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registertype != null">
+        registertype = #{registertype,jdbcType=CHAR},
+      </if>
+      <if test="userCfpId != null">
+        user_cfp_id = #{userCfpId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.happy.orange.mybatis.entity.vo.User">
+    update user
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=CHAR},
+      password = #{password,jdbcType=VARCHAR},
+      deal_pwd = #{dealPwd,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      referee = #{referee,jdbcType=INTEGER},
+      invite_code = #{inviteCode,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      openId = #{openid,jdbcType=VARCHAR},
+      blacklist = #{blacklist,jdbcType=CHAR},
+      locked = #{locked,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      lastupdate = #{lastupdate,jdbcType=TIMESTAMP},
+      manager = #{manager,jdbcType=INTEGER},
+      source_from = #{sourceFrom,jdbcType=CHAR},
+      last_logintime = #{lastLogintime,jdbcType=TIMESTAMP},
+      email_verified = #{emailVerified,jdbcType=CHAR},
+      mobile_verified = #{mobileVerified,jdbcType=CHAR},
+      idcard_verified = #{idcardVerified,jdbcType=CHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      failure_times = #{failureTimes,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      registertype = #{registertype,jdbcType=CHAR},
+      user_cfp_id = #{userCfpId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
